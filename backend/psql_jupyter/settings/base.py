@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "common",
     "restaurants",
+    "music",
     "users",
     "django_extensions",
 ]
