@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "common",
     "users",
     "django_extensions",
+    "teams",
 ]
 
 MIDDLEWARE = [
