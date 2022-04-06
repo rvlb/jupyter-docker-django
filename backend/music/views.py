@@ -8,3 +8,4 @@ class SongsList(ListView):
     model = Song
     context_object_name = "songs"
     template_name = "songs/songs_list.html"
+    queryset = Song.objects.select_related("album")

@@ -1,7 +1,7 @@
 <h2>Songs List</h2>
 {% for song in songs %}
-   <div>
-       <h3>{{ song.song_title }}</h3>
+   <div style="padding: 10px 0; border-bottom: 1px solid palevioletred;">
+       <h4>{{ song.song_title }}</h4>
        <small>Album: {{ song.album.album_title }}</small>
    </div>
 {% endfor %}
