@@ -22,5 +22,5 @@ urlpatterns = [
     path("api/", include(router.urls), name="api"),
 ]
 
-if "silk" in settings.INSTALLED_APPS:
-    urlpatterns += [re_path(r"^silk/", include("silk.urls", namespace="silk"))]
+# if "silk" in settings.INSTALLED_APPS:
+#     urlpatterns += [re_path(r"^silk/", include("silk.urls", namespace="silk"))]

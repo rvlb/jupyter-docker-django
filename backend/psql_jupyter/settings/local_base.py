@@ -73,5 +73,5 @@ SHELL_PLUS_POST_IMPORTS = [ # extra things to import in notebook
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 # Silk
-INSTALLED_APPS += ('silk',)
-MIDDLEWARE += ['silk.middleware.SilkyMiddleware'] + MIDDLEWARE
+# INSTALLED_APPS += ('silk',)
+# MIDDLEWARE += ['silk.middleware.SilkyMiddleware'] + MIDDLEWARE
