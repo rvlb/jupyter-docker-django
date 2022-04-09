@@ -18,16 +18,8 @@ class City(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
-    tv_name = models.CharField(max_length=4)
+    tv_name = models.CharField(max_length=4, unique=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=['tv_name'],
-                name='%(app_label)s_%(class)s_tv_name_unique',
-            ),
-        ]
 
 class Player(models.Model):
     name = models.CharField(max_length=255)

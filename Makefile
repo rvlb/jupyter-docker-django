@@ -72,3 +72,6 @@ docker_migrate:
 
 docker_startapp:
 	docker-compose run --rm backend python manage.py startapp $(ARG)
+
+docker_psql:
+	docker-compose exec db psql "user=psql_jupyter dbname=psql_jupyter options=--search_path=public" --quiet

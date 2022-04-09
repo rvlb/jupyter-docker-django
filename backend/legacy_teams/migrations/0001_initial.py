@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('tv_name', models.CharField(max_length=4, unique=True)),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='teams.city')),
+                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='legacy_teams.city')),
             ],
         ),
         migrations.CreateModel(
@@ -34,8 +34,8 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('nickname', models.CharField(max_length=255)),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='teams.city')),
-                ('teams', models.ManyToManyField(to='teams.Team')),
+                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='legacy_teams.city')),
+                ('teams', models.ManyToManyField(to='legacy_teams.Team')),
             ],
         ),
         migrations.CreateModel(
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('position', models.CharField(choices=[('GK', 'Goalkeeper'), ('RB', 'Right back'), ('CB', 'Center back'), ('LB', 'Left back'), ('DM', 'Defensive midfielder'), ('CM', 'Central midfielder'), ('AM', 'Attacking midfielder'), ('CF', 'Center forward'), ('RW', 'Right winger'), ('LW', 'Left winger')], max_length=2)),
-                ('team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='teams.team')),
+                ('team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='legacy_teams.team')),
             ],
         ),
     ]
