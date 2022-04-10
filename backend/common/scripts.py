@@ -8,13 +8,25 @@ from legacy_teams.models import Team as LegacyTeam, City as LegacyCity
 def _random_str(alphabet, size):
     return "".join(random.choice(alphabet) for _ in range(size))
 
-def create_cities(count, legacy=False):
+def create_cities(legacy=False):
     model = City
     if legacy:
         model = LegacyCity
-    for _ in range(count):
+    cities = [
+        "Kakariko Village",
+        "Tarrey Town",
+        "Gerudo Town",
+        "Lurelin Village",
+        "Rito Village",
+        "Goron City",
+        "Zora's Domain",
+        "Korok Forest",
+        "Hyrule Castle Town",
+        "Hateno Village",
+    ]
+    for city_name in cities:
         city = model(
-            name=_random_str(string.ascii_letters, 10)
+            name=city_name
         )
         city.save()
     print("Finished creating cities")
@@ -52,9 +64,9 @@ def clear():
     LegacyCity.objects.all().delete()
 
 def run():
-    create_cities(10)
+    create_cities()
     create_teams()
 
 def run_legacy():
-    create_cities(10, legacy=True)
+    create_cities(legacy=True)
     create_teams(legacy=True)

@@ -17,7 +17,7 @@ class City(models.Model):
     name = models.CharField(max_length=255)
 
 class Team(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, db_index=True)
     tv_name = models.CharField(max_length=4)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
