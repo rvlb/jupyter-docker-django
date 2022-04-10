@@ -1,21 +1,26 @@
 from django.db import models
 
 class Team(models.Model):
-    name = models.CharField(max_length=255, db_index=True)
-    tv_name = models.CharField(max_length=4)
+    name = models.CharField(max_length=255)
+    name_with_index = models.CharField(max_length=255, db_index=True)
+
+    tv_name = models.CharField(max_length=4, unique=True)
+    tv_name_without_unique = models.CharField(max_length=4)
+
     city = models.CharField(max_length=255)
+    city_with_partial_index = models.CharField(max_length=255)
 
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['tv_name'],
+                fields=['tv_name_without_unique'],
                 name='%(app_label)s_%(class)s_tv_name_unique',
             ),
         ]
         indexes = [
             models.Index(
-                fields=['city'],
-                condition=models.Q(city="Zora's Domain"),
+                fields=['city_with_partial_index'],
+                condition=models.Q(city_with_partial_index="Zora's Domain"),
                 name='%(app_label)s_%(class)s_city_zora',
             ),
         ]

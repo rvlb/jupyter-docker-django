@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "users",
     "django_extensions",
     "teams",
-    "legacy_teams",
 ]
 
 MIDDLEWARE = [
