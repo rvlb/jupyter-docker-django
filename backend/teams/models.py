@@ -1,25 +1,9 @@
 from django.db import models
 
-PLAYER_POSITION_CHOICES = [
-    ('GK', 'Goalkeeper'),
-    ('RB', 'Right back'),
-    ('CB', 'Center back'),
-    ('LB', 'Left back'),
-    ('DM', 'Defensive midfielder'),
-    ('CM', 'Central midfielder'),
-    ('AM', 'Attacking midfielder'),
-    ('CF', 'Center forward'),
-    ('RW', 'Right winger'),
-    ('LW', 'Left winger'),
-]
-
-class City(models.Model):
-    name = models.CharField(max_length=255)
-
 class Team(models.Model):
     name = models.CharField(max_length=255, db_index=True)
     tv_name = models.CharField(max_length=4)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.CharField(max_length=255)
 
     class Meta:
         constraints = [
@@ -28,14 +12,20 @@ class Team(models.Model):
                 name='%(app_label)s_%(class)s_tv_name_unique',
             ),
         ]
+        indexes = [
+            models.Index(
+                fields=['city'],
+                condition=models.Q(city="Zora's Domain"),
+                name='%(app_label)s_%(class)s_city_zora',
+            ),
+        ]
 
 class Player(models.Model):
     name = models.CharField(max_length=255)
-    position = models.CharField(max_length=2, choices=PLAYER_POSITION_CHOICES)
+    position = models.CharField(max_length=2)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
 class Stadium(models.Model):
     name = models.CharField(max_length=255)
     nickname = models.CharField(max_length=255)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
     teams = models.ManyToManyField(Team)

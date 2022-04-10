@@ -76,5 +76,9 @@ docker_startapp:
 docker_shell:
 	docker-compose run --rm backend python manage.py shell
 
+docker_drop_db:
+	docker-compose down
+	docker volume rm psql_jupyter_dbdata
+
 docker_psql:
 	docker-compose exec db psql "user=psql_jupyter dbname=psql_jupyter options=--search_path=public" --quiet
