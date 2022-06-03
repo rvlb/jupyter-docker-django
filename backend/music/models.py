@@ -14,6 +14,7 @@ class Album(models.Model):
         "music.RecordCompany", related_name="albums", on_delete=models.CASCADE, null=True
     )
     release_date = models.DateTimeField(null=True)
+    grammy_nominated = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.album_title} by {self.artist}"
@@ -35,6 +36,7 @@ class Song(models.Model):
     composers = models.ManyToManyField("music.Artist", related_name="songs_written", blank=True)
     genre = models.CharField(choices=MUSIC_GENRES_CHOICES, max_length=200, blank=True)
     release_date = models.DateTimeField(null=True)
+    grammy_nominated = models.BooleanField(default=False)
 
     def __str__(self):
         return self.song_title
